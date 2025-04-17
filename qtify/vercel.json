@@ -1,3 +1,7 @@
 {
-    "installCommand": "npm install --production=false"
-}
+    "build": {
+      "command": "npm install vite && vite build",
+      "output": "dist"
+    },
+    "installCommand": "npm install --prefer-offline"  
+  }
