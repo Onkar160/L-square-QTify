@@ -1,0 +1,31 @@
+.card_wrapper {
+    width: 160px;
+    background-color: var(--color-black);
+}
+
+.card {
+    position: relative;
+    border-radius: 15px;
+    overflow: hidden;
+    height: 205px;
+}
+
+.card img {
+    object-fit: cover;
+    object-position: bottom;
+}
+
+.card_banner {
+    background-color: var(--color-white);
+    padding: 8px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}
+
+.card_title {
+    color: var(--color-white);
+    font-size: 18px;
+    padding: 5px 0px;
+}

@@ -1,0 +1,38 @@
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    background-color: var(--color-black);
+    color: var(--color-white);
+    padding: 30px;
+}
+
+.header {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.collapse_button {
+    color: var(--color-primary);
+}
+
+.collapse_button:hover {
+    cursor: pointer;
+}
+
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    padding: 0px 15px;
+}
+
+.progress_bar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+    padding: 0px 15px;
+}

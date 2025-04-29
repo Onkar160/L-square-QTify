@@ -1,18 +1,38 @@
 // import "./App.css";
+import React, { useState, useEffect } from "react";
 import Navbar from "./components/Navbar/Navbar";
 import { ThemeProvider } from "@emotion/react";
 import theme from "./theme";
 import { cssVariables } from "./theme";
-import Button from "./components/Button/Button"
 import { Outlet } from "react-router";
+import { fetchTopAlbum } from "./components/API/API";
 
 function App() {
+  const [data, setData] = useState({});
+
+  const generateItems = (key, fun) => {
+    fun().then((data) => {
+      setData((prevData) => {
+        return {
+          ...prevData,
+          [key]: data,
+        };
+      });
+    });
+  };
+
+  useEffect(() => {
+    generateItems("topAlbums", fetchTopAlbum);
+  }, []);
+
+  const {topAlbums = [], newAlbums = [], songs = [], genres = []} = data;
+
   return (
     <ThemeProvider theme={theme}>
       <div className="app_container" style={cssVariables}>
         {/* <Button>Give feecback</Button> */}
         <Navbar />
-        <Outlet />
+        <Outlet context={{topAlbums, newAlbums, songs, genres}}/>
       </div>
     </ThemeProvider>
   );
