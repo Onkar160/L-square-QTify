@@ -5,7 +5,7 @@ import { ThemeProvider } from "@emotion/react";
 import theme from "./theme";
 import { cssVariables } from "./theme";
 import { Outlet } from "react-router";
-import { fetchTopAlbum } from "./components/API/API";
+import { fetchTopAlbum, fetchNewAlbum } from "./components/API/API";
 
 function App() {
   const [data, setData] = useState({});
@@ -23,6 +23,7 @@ function App() {
 
   useEffect(() => {
     generateItems("topAlbums", fetchTopAlbum);
+    generateItems("newAlbums", fetchNewAlbum);
   }, []);
 
   const {topAlbums = [], newAlbums = [], songs = [], genres = []} = data;

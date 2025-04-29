@@ -10,7 +10,8 @@ export default function HomePage() {
   return (
     <>
       <Hero />
-      <Section topAlbums={topAlbums} />
+      <Section topAlbums={topAlbums} title="Top Albums" />
+      <Section topAlbums={newAlbums} title="New Albums" />
     </>
   );
 }

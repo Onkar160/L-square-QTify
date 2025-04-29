@@ -14,3 +14,13 @@ export const fetchTopAlbum = async () => {
 }
 
 
+
+export const fetchNewAlbum = async () => {
+    try {
+        const response = await axios.get(`${backendURL}/albums/new`);
+        console.log(response);
+        return response;
+    } catch (error) {
+        console.log(error);
+    }
+}

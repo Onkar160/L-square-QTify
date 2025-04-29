@@ -3,15 +3,15 @@ import styles from "./Section.module.css";
 import Card from "../Card/Card";
 import CircularProgress from "@mui/material/CircularProgress";
 
-export default function Section({ topAlbums, type }) {
+export default function Section({ topAlbums, type, title }) {
   const [isCollapsed, setCollapse] = useState(true);
 
   return (
     <>
       <div className={styles.wrapper}>
         <div className={styles.header}>
-          <h3>Top Album</h3>
-          {isCollapsed ? (
+          <h3>{title}</h3>
+          {!isCollapsed ? (
             <h4
               className={styles.collapse_button}
               onClick={() => setCollapse(!isCollapsed)}
