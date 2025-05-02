@@ -44,7 +44,7 @@ export default function Card({ item, type }) {
         </div>
       )}
 
-      <p className={styles.card_title}>{truncate(item.title)}</p>
+      <p className={styles.card_title}>{item.title}</p>
     </div>
   );
 }
