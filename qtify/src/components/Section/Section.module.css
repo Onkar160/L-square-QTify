@@ -7,6 +7,14 @@
     padding: 0px 30px 20px 30px;
 }
 
+.wrapper_songs {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--color-black);
+    color: var(--color-white);
+    padding: 0px 30px 20px 30px;
+}
+
 .header {
     display: flex;
     width: 100%;

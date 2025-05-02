@@ -1,8 +1,10 @@
 import React from "react";
 import { Chip } from "@mui/material";
 import styles from "./Card.module.css";
+import { Link } from "react-router";
+import { truncate } from "../../helpers/helpers";
 
-export default function Card({item}) {
+export default function Card({ item, type }) {
   const dummyJson = {
     id: "7853ba7d-ffa4-4c73-ad90-7e001c2787e3",
     title: "Strident Analyst",
@@ -16,17 +18,33 @@ export default function Card({item}) {
 
   return (
     <div className={styles.card_wrapper}>
-      <div className={styles.card}>
-        <img src={item.image} />
-        <div className={styles.card_banner}>
-          <Chip
-            size="small"
-            label={item.follows + " Follows"}
-            color="secondary"
-          />
+      {type !== "song" ? (
+        <Link to={`/album/${item.slug}`}>
+          <div className={styles.card}>
+            <img src={item.image} />
+            <div className={styles.card_banner}>
+              <Chip
+                size="small"
+                label={item.follows + " Follows"}
+                color="secondary"
+              />
+            </div>
+          </div>
+        </Link>
+      ) : (
+        <div className={styles.card}>
+          <img src={item.image} />
+          <div className={styles.card_banner}>
+            <Chip
+              size="small"
+              label={item.likes + " Likes"}
+              color="secondary"
+            />
+          </div>
         </div>
-      </div>
-      <p className={styles.card_title}>{item.title}</p>
+      )}
+
+      <p className={styles.card_title}>{truncate(item.title)}</p>
     </div>
   );
 }

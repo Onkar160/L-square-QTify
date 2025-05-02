@@ -1,9 +1,10 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import { createBrowserRouter, RouterProvider } from 'react-router'
-import './main.css'
-import App from './App.jsx'
-import HomePage from "./pages/HomePage/HomePage"
+import { StrictMode } from 'react';
+import { createRoot } from 'react-dom/client';
+import { createBrowserRouter, RouterProvider } from 'react-router';
+import './main.css';
+import App from './App.jsx';
+import HomePage from "./pages/HomePage/HomePage";
+import AlbumPage from "./pages/AlbumPage/AlbumPage";
 
 
 const route = createBrowserRouter([{
@@ -12,7 +13,12 @@ const route = createBrowserRouter([{
   children: [{
     path: "/",
     element: <HomePage /> 
-  }]
+  },
+    {
+      path: "/album/:albumid",
+      element: <AlbumPage />
+    }
+]
 }])
 
 createRoot(document.getElementById('root')).render(

@@ -1,4 +1,4 @@
-import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules";
+import { Navigation} from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
@@ -13,6 +13,7 @@ export default function Carousel({ items, type }) {
   const swiperRef = useRef(null);
   // For forceRe-rendering
   const [triggerRender, setRender] = useState();
+ 
 
   useEffect(() => {
     setRender({});
@@ -30,11 +31,20 @@ export default function Carousel({ items, type }) {
         allowTouchMove
         slidesPerView={"auto"}
       >
-        {items.data.map((item) => (
-          <SwiperSlide key={item.id}>
-            <Card item={item} />
-          </SwiperSlide>
-        ))}
+        {items?.data 
+  ? items.data.map((item) => (
+      <SwiperSlide key={item.id}>
+        <Card item={item} type={type} />
+      </SwiperSlide>
+    ))
+  : Array.isArray(items) 
+    ? items.map((item) => (
+        <SwiperSlide key={item.id}>
+          <Card item={item} type={type} />
+        </SwiperSlide>
+      ))
+    : null}
+        
       </Swiper>{" "}
       <div className={styles.button_wrapper}>
         <PrevButton className={styles.prev} swiper={swiperRef.current} />
