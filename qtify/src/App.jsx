@@ -10,6 +10,7 @@ import { fetchTopAlbum, fetchNewAlbum, fetchSongs, fetchGenres } from "./compone
 function App() {
   const [data, setData] = useState({});
   // const [filteredList, setFilteredList] = useState(null);
+  const [searchData, addSearchData] = useState([]);
 
   const generateItems = (key, fun) => {
     fun().then((data) => {
@@ -29,13 +30,15 @@ function App() {
     generateItems("genres", fetchGenres);
   }, []);
 
-  const {topAlbums = [], newAlbums = [], songs = [], genres = []} = data;
 
+  const {topAlbums = [], newAlbums = [], songs = [], genres = []} = data; 
+
+ 
   return (
     <ThemeProvider theme={theme}>
       <div className="app_container" style={cssVariables}>
         {/* <Button>Give feecback</Button> */}
-        <Navbar />
+        <Navbar topAlbums={topAlbums.data} newAlbums={newAlbums.data} />
         <Outlet context={{topAlbums, newAlbums, songs, genres}}/>
       </div>
     </ThemeProvider>

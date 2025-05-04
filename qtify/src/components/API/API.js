@@ -74,3 +74,12 @@ export const filteredSongs = async (songsResponse, genresResponse) => {
     }
   };
 
+
+  export const fetchFaq = async () => {
+    try {
+      const response = await axios.get(`${backendURL}/faq`);
+      return response;
+    } catch (error) {
+      console.log(error);
+    }
+  }

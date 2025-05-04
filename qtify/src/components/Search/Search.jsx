@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./Search.module.css";
 import SearchIcon from "../../assets/search-icon.svg";
 import useAutocomplete from "@mui/material/useAutocomplete";
-import { styled } from "@mui/system";
+import { minHeight, styled } from "@mui/system";
 import { truncate } from "../../helpers/helpers";
 import { useNavigate } from "react-router";
 import { Tooltip } from "@mui/material";
@@ -36,7 +36,7 @@ const Listbox = styled("ul")(({ theme }) => ({
   },
 }));
 
-function Search({ searchData, placeholder }) {
+function Search({ topAlbums, newAlbums, placeholder }) {
   const {
     getRootProps,
     getInputLabelProps,
@@ -47,7 +47,7 @@ function Search({ searchData, placeholder }) {
     groupedOptions,
   } = useAutocomplete({
     id: "use-autocomplete-demo",
-    options: searchData || [],
+    options: [...(topAlbums || []), ...(newAlbums || [])],
     getOptionLabel: (option) => option.title,
   });
 
@@ -96,12 +96,19 @@ function Search({ searchData, placeholder }) {
                 className={styles.listElement}
                 {...getOptionProps({ option, index })}
               >
-                <div>
-                  <p className={styles.albumTitle}>{option.title}</p>
+                <div className={styles.options_wrapper}>
+                  <img
+                    src={option.image}
+                    height="100em"
+                    styles={{ objectFit: "cover" }}
+                  />
+                  <div>
+                    <p className={styles.albumTitle}>{option.title}</p>
 
-                  <p className={styles.albumArtists}>
-                    {truncate(artists.join(", "), 40)}
-                  </p>
+                    <p className={styles.albumArtists}>
+                      {truncate(artists.join(", "), 40)}
+                    </p>
+                  </div>
                 </div>
               </li>
             );

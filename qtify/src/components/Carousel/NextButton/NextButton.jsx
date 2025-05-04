@@ -5,7 +5,7 @@ import styles from "./NextButton.module.css";
 const NextButton = ({swiper}) => {
     
   return (
-    <div className={`${styles.button} ${swiper?.isEnd ? styles.hidden : ''}`} onClick={() => swiper?.slideNext()}>
+    <div className={`${styles.button} `} onClick={() => swiper?.slideNext()}>
       <img src={RightArrow} />
     </div>
   );

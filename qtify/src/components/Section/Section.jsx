@@ -56,7 +56,7 @@ export default function Section({ data, type, title, genres, songs }) {
 }
 
 function renderSongContent(songs, genres, isCollapsed, type, filteredList) {
-  if (!songs?.data?.length) {
+  if (!songs?.data?.length || !genres?.data?.data?.length) {
     return (
       <div className={styles.progress_bar}>
         <CircularProgress color="primary" />

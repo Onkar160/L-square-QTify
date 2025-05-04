@@ -1,0 +1,9 @@
+.wrapper {
+    background-color: var(--color-black);
+    display: flex;
+    gap: 25px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 25px;
+}

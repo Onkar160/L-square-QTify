@@ -1,6 +1,8 @@
 import Hero from "../../components/Hero/Hero";
 import { useOutletContext } from "react-router";
 import Section from "../../components/Section/Section";
+import FAQ from "../../components/FAQ/FAQ";
+import { fetchFaq } from "../../components/API/API";
 import styles from "./HomePage.module.css";
 // import FilterTabs from "../../components/FilterTabs/FilterTabs";
 // import {useState} from "react";
@@ -19,6 +21,7 @@ export default function HomePage() {
       <div className={styles.songs_wrapper}>
         <Section songs={songs} title="Songs" type={"song"} genres={genres} className={styles.songs} />
       </div>
+      <FAQ fetchFaq={fetchFaq} />
     </div>
   );
 }
